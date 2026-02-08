@@ -89,7 +89,7 @@ with tab1:
     )
 
 with tab2:
-    st.info("**Analysis limited to**: Melanoma patients, PBMC samples, Miraclib treatment")
+    st.info("**Filtered to**: Melanoma patients on Miraclib treatment, PBMC samples only")
 
     st.markdown("### Cell Population Distributions")
     part3_data = df_processed[
@@ -111,7 +111,7 @@ with tab2:
 
     st.markdown("---")
     st.markdown("### Responder vs. Non-Responder Analysis")
-    st.caption("Statistical Test: Mann-Whitney U (Non-parametric test for independent samples)")
+    st.caption("Statistical Test: Mann-Whitney U (non-parametric test for independent samples)")
     
     results = []
     if not part3_data.empty:
@@ -142,7 +142,7 @@ with tab2:
         st.warning("Insufficient data for statistical analysis.")
 
 with tab3:
-    st.info("**Analysis limited to**: Melanoma patients, PBMC samples, Miraclib treatment, Baseline (time_from_treatment_start=0)")
+    st.info("**Filtered to**: Melanoma patients on Miraclib treatment, PBMC samples at baseline (time_from_treatment_start=0)")
     st.markdown("### Subset Analysis - Early Treatment Effects")
     
     answers = analysis.get_part4_answers(df_processed)

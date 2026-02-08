@@ -9,7 +9,6 @@ def init_db():
 def load_data(db: Session, csv_path: str):
     """
     Parses CSV and loads it into the normalized database schema.
-    Uses a Lookup Table for Cell Types to ensure referential integrity.
     """
     if db.query(models.Sample).first():
         return
