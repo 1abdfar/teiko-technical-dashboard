@@ -39,12 +39,6 @@ def get_part4_answers(df):
     response_counts = unique_subs['response'].value_counts().to_dict()
     sex_counts = unique_subs['sex'].value_counts().to_dict()
     
-    male_resp_b_cells = subset[
-        (subset['sex'] == 'M') & 
-        (subset['response'] == 'yes') & 
-        (subset['cell_type'] == 'b_cell')
-    ]['count'].mean()
-    
     return {
         "samples_per_proj": samples_per_proj,
         "response_counts": response_counts,

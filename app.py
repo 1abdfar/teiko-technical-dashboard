@@ -142,8 +142,8 @@ with tab2:
         st.warning("Insufficient data for statistical analysis.")
 
 with tab3:
-    st.markdown("### Subset Analysis - Early Treatment Effects")
     st.info("**Analysis limited to**: Melanoma patients, PBMC samples, Miraclib treatment, Baseline (time_from_treatment_start=0)")
+    st.markdown("### Subset Analysis - Early Treatment Effects")
     
     answers = analysis.get_part4_answers(df_processed)
     
