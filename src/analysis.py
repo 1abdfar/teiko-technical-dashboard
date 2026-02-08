@@ -19,3 +19,34 @@ def run_mann_whitney(df, cell_type, group_col='response', group1='yes', group2='
         
     stat, p_val = stats.mannwhitneyu(g1_data, g2_data)
     return stat, p_val
+
+def get_part4_answers(df):
+    """
+    Analyzes baseline melanoma PBMC samples treated with miraclib.
+    
+    Returns counts by project, response status, gender, and average
+    """
+    subset = df[
+        (df['condition'] == 'melanoma') & 
+        (df['sample_type'] == 'PBMC') & 
+        (df['time_from_treatment_start'] == 0) & 
+        (df['treatment'] == 'miraclib')
+    ]
+    # TODO: add validation for case-sensitive filtering(?)
+    
+    samples_per_proj = subset[['sample_id', 'project']].drop_duplicates()['project'].value_counts().to_dict()
+    unique_subs = subset[['subject', 'response', 'sex']].drop_duplicates()
+    response_counts = unique_subs['response'].value_counts().to_dict()
+    sex_counts = unique_subs['sex'].value_counts().to_dict()
+    
+    male_resp_b_cells = subset[
+        (subset['sex'] == 'M') & 
+        (subset['response'] == 'yes') & 
+        (subset['cell_type'] == 'b_cell')
+    ]['count'].mean()
+    
+    return {
+        "samples_per_proj": samples_per_proj,
+        "response_counts": response_counts,
+        "sex_counts": sex_counts,
+    }
