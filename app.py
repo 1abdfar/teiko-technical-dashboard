@@ -181,8 +181,3 @@ with tab3:
             st.dataframe(sex_df, use_container_width=True, hide_index=True)
         else:
             st.write("No data")
-    
-    st.markdown("---")
-    st.markdown("### Male Responder B-Cell Average")
-    st.caption("Among melanoma males who responded to treatment at baseline (t=0)")
-    st.metric("Average B-Cell Count", f"{answers['avg_b_cell_male_responder']:.2f}")
